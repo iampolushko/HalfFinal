@@ -29,15 +29,19 @@ def check(elems_in_csv):
             try:
                 socket_info = socket.gethostbyaddr(elem)
                 socket_link = requests.get("https://" + socket_info[0])
-                result = requests.get("Https://" + socket_link)
-                print(result)
+                result_https = requests.get("Https://" + socket_link)
+                result_http = requests.get("Http://" + socket_link)
+                print(result_https)
+                print(result_http)
             except Exception as e:
                 print(e)
 
         else:
             try:
-                result = requests.get("Https://" + elem)
-                print(result)
+                result_https = requests.get("Https://" + elem)
+                result_http = requests.get("http://" + elem)
+                print(result_https)
+                print(result_http)
             except ConnectionError:
                 print("Invalid elem")
             except Exception as e:
